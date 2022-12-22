@@ -31,6 +31,11 @@ corpus<-tm_map(corpus, stemDocument)
 
 # Compute TF-IDF
 tdm<-TermDocumentMatrix(corpus)
+
+if (any(apply(tdm, 2, sum) == 0)) {
+  tdm <- tdm[, apply(tdm, 2, sum) != 0]
+}
+
 tridf<-weightTfIdf(tdm)
 
 # Extract (20) concepts
