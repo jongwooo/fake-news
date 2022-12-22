@@ -9,8 +9,8 @@ fake.news.df<-read.csv("data/FakeNews.csv")
 # Remove rows with missing values
 fake.news.df<-fake.news.df[complete.cases(fake.news.df), ]
 
-# Remove non-specific data (1 or 0)
-fake.news.df<-fake.news.df[fake.news.df$real==1|fake.news.df$real==0,]
+# Remove non-specific data
+fake.news.df<-fake.news.df[fake.news.df$real %in% c(1, 0),]
 
 # Calculate the number of rows
 row_size<-nrow(fake.news.df)
