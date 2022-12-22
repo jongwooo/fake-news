@@ -6,6 +6,9 @@ library(caret)
 # Read csv file
 fake.news.df<-read.csv("data/FakeNews.csv")
 
+# Remove rows with missing values
+fake.news.df<-fake.news.df[complete.cases(fake.news.df), ]
+
 # Calculate the number of rows
 row_size<-nrow(fake.news.df)
 
