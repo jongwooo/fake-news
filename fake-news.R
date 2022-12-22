@@ -7,7 +7,7 @@ library(caret)
 fake.news.df<-read.csv("data/FakeNews.csv")
 
 # Remove rows with missing values
-fake.news.df<-fake.news.df[complete.cases(fake.news.df), ]
+fake.news.df<-fake.news.df[complete.cases(fake.news.df),]
 
 # Remove non-specific data
 fake.news.df<-fake.news.df[fake.news.df$real %in% c(1, 0),]
@@ -35,8 +35,8 @@ corpus<-tm_map(corpus, stemDocument)
 # Compute TF-IDF
 tdm<-TermDocumentMatrix(corpus)
 
-if (any(apply(tdm, 2, sum) == 0)) {
-  tdm <- tdm[, apply(tdm, 2, sum) != 0]
+if (any(apply(tdm, 2, sum)==0)) {
+  tdm<-tdm[, apply(tdm, 2, sum)!=0]
 }
 
 tridf<-weightTfIdf(tdm)
